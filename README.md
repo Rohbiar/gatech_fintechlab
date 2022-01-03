@@ -25,9 +25,12 @@ conda create -n gatech_fintechlab python=3.9
 
 # Running the Code
 
-- while in the environment run the script with:
-  - python download.py
+- While in the environment run the script with:
+```
+python download.py
+```
 
 # What to Expect
 
-The script will begin and output statetments corressponding to which set of files is being downloaded
+The script will begin and output statetments corresponding to which set of files is being downloaded.
+The script automatically starts at the year 1995 Quarter 1 and ends at year 2021 Quarter 4.

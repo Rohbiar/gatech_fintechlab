@@ -9,6 +9,7 @@
 ```
 bash Miniconda3-latest-MacOSX-x86_64.sh
 ```
+- Refresh the terminal and use ```conda``` to test installation.
 
 # Setting up Environment
 

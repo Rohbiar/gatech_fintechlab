@@ -13,7 +13,8 @@
 - Create a conda environment with:
   - conda create -n gatech_fintechlab python=3.9
 - Activate conda and install all dependencies including poetry:
-```conda activate fb-env
+```
+   conda activate fb-env
    pip install poetry
    poetry install
 ```

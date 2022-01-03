@@ -6,12 +6,12 @@
 - Clone repo
 - Install Conda 
 - Run miniconda script
-  - ```bash Miniconda3-latest-MacOSX-x86_64.sh```
+```bash Miniconda3-latest-MacOSX-x86_64.sh```
 
 # Setting up Environment
 
 - Create a conda environment with:
-  - ```conda create -n gatech_fintechlab python=3.9```
+```conda create -n gatech_fintechlab python=3.9```
 - Activate conda and install all dependencies including poetry:
 ```
    conda activate fb-env

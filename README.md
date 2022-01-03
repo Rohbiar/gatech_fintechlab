@@ -4,7 +4,7 @@
 # How to Run
 
 - Clone repo
-- Install Conda 
+- [Install](https://docs.conda.io/en/latest/miniconda.html) Conda
 - Run miniconda script
 ```
 bash Miniconda3-latest-MacOSX-x86_64.sh

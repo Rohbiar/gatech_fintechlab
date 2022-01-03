@@ -34,5 +34,4 @@ python download.py
 
 The script will begin and output statetments corresponding to which set of files is being downloaded.  
 The script automatically starts at the year 1995 Quarter 1 and ends at year 2021 Quarter 4.  
-The 8-K files will be stored in a folder called "files" in the current directory.  
-If files does not exist, the script will create it.  
+The 8-K files will be stored in a csv file called filings in a folder called "files" in the current directory.  

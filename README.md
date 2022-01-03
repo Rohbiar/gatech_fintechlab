@@ -15,7 +15,8 @@
 - Activate conda and install all dependencies including poetry:
 ```conda activate fb-env
    pip install poetry
-   poetry install```
+   poetry install
+```
 
 # Running the Code
 

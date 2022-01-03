@@ -26,9 +26,13 @@ conda create -n gatech_fintechlab python=3.9
 
 # Running the Code
 
-- While in the environment run the script with:
+- While in the environment run the download script with:
 ```
 python download.py
+```
+- After the download script has been completed, run the sentiment analysis script with
+```
+python analyze.py
 ```
 
 # What to Expect

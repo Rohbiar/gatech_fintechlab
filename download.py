@@ -9,9 +9,9 @@ from zipfile import ZipFile
 import pandas as pd
 from urllib.request import Request, urlopen
 
+from paths import FORM_PATH, ROOT_PATH
 
-ROOT_PATH = "./files"
-FORM_PATH = os.path.join(ROOT_PATH, "forms")
+
 COLUMNS = ["CIK", "Company Name", "Form Type", "Date Filed", "Filename"]
 SAMPLE_SIZE = 10
 
@@ -19,7 +19,7 @@ EDGAR_INDEX_URL = "https://www.sec.gov/Archives/edgar/full-index/{year}/QTR{quar
 EDGAR_DATA_URL = "https://www.sec.gov/Archives/{filename}"
 HEADERS = {
     "Accept-Encoding": "gzip",
-    "User-Agent": "Georgia Tech FinTech Lab rohname@gmail.com",
+    "User-Agent": "GTFL abc333@gmail.com",
 }
 
 
@@ -56,6 +56,7 @@ def generate_urls() -> List[IndexUrl]:
 
 
 def get_contents(url: str) -> List[str]:
+    print(f"Fetching contents form {url}")
     req = Request(f"{url}/master.zip")
     for header, val in HEADERS.items():
         req.add_header(header, val)
@@ -63,7 +64,7 @@ def get_contents(url: str) -> List[str]:
     bytes = urlopen(req).read()
     file = ZipFile(BytesIO(bytes))
     return [
-        line.decode("utf-8").replace("\r", "").replace("\n", "")
+        line.decode("ISO-8859-1").replace("\r", "").replace("\n", "")
         for line in file.open("master.idx").readlines()
     ]
 
@@ -84,10 +85,10 @@ def parse_contents(filings: List[Filing], contents: List[str], year: int, quarte
     print(f"Downloading {len(chosen)} files for year: {year}, quarter: {quarter}")
     for entry in chosen:
         filings.append(Filing(cik=entry.cik, date=entry.date))
-        download(entry)
+        download(entry=entry, year=year, quarter=quarter)
 
 
-def download(entry: FormEntry):
+def download(entry: FormEntry, year: int, quarter: int):
     resp = requests.get(
         EDGAR_DATA_URL.format(filename=entry.filename),
         headers=HEADERS,
@@ -97,7 +98,7 @@ def download(entry: FormEntry):
         return
 
     try:
-        download_name = f"{entry.date}-{entry.cik}.txt"
+        download_name = f"{year}-{quarter}--{entry.date}-{entry.cik}.txt"
         with open(os.path.join(FORM_PATH, download_name), "w") as f:
             f.write(strip_html(resp.text))
     except Exception as e:
